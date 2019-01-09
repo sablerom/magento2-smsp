@@ -1,0 +1,11 @@
+#smsp_general table .label {
+    width: 12% !important;
+}
+
+#smsp_general table .value {
+    width: 88% !important;
+}
+
+#smsp_general_develop table .value td:first-child {
+    width: 25% !important;
+}

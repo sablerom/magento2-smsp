@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="sablesoft" translate="label" sortOrder="150">
+            <label>SableSoft</label>
+        </tab>
+        <section id="smsp" translate="label"
+                 sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <header_css>smsp-config</header_css>
+            <label>SMSP.BY Api</label>
+            <tab>sablesoft</tab>
+            <resource>SableSoft_Smsp::config</resource>
+            <group id="general" translate="label comment" sortOrder="10"
+                   showInDefault="1" showInWebsite="0" showInStore="0">
+                <attribute type="expanded">1</attribute>
+                <label>General</label>
+                <comment>This is configuration page for smsp.by api module.</comment>
+                <field id="user" translate="label comment" type="text" sortOrder="100"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Api User</label>
+                    <validate>required-entry validate-email</validate>
+                    <comment>SMS Api user email</comment>
+                </field>
+                <field id="apikey" translate="label comment" type="text" sortOrder="110"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Api Key</label>
+                    <validate>required-entry</validate>
+                    <comment>SMSP Api user key</comment>
+                </field>
+                <field id="sender" translate="label comment" type="text" sortOrder="120"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sender</label>
+                    <validate>validate-data</validate>
+                    <comment>SMSP Sender Name</comment>
+                </field>
+                <field id="country" translate="label comment" type="text" sortOrder="130"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Country Code</label>
+                    <validate>validate-digits</validate>
+                    <comment>Country code for applying to recipients numbers</comment>
+                </field>
+                <field id="is_develop" translate="label comment" type="select" sortOrder="140"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Develop Mode</label>
+                    <comment>Developer mode flag. Don't use in production!</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <group id="develop" translate="label comment" sortOrder="150"
+                       showInDefault="1" showInWebsite="0" showInStore="0">
+                    <depends>
+                        <field id="is_develop">1</field>
+                    </depends>
+                    <label>Development</label>
+                    <comment>For developers only!</comment>
+                    <field id="url" translate="label" type="text" sortOrder="0"
+                           showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Url</label>
+                        <validate>required-entry validate-url</validate>
+                    </field>
+                    <field id="commands" translate="label" sortOrder="10"
+                           showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Commands</label>
+                        <frontend_model>SableSoft\Smsp\Model\Command\Frontend</frontend_model>
+                        <backend_model>SableSoft\Smsp\Model\Command\Backend</backend_model>
+                    </field>
+                    <field id="devkey" translate="label" type="text" sortOrder="20"
+                           showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Developer Key</label>
+                        <validate>required-entry validate-data</validate>
+                    </field>
+                </group>
+            </group>
+        </section>
+    </system>
+</config>
