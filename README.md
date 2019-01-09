@@ -1,3 +1,8 @@
+# About
+
+This is Cms Magento 2 module for integration with smsp.by api service.
+For more info look [this service site](https://smsp.by/).
+
 # Install
 
 * `composer require 'sablesoft/magento2-smsp'`
