@@ -2,7 +2,7 @@
   "name": "sablesoft/magento2-smsp",
   "description": "SableSoft SMSP.BY API Connector",
   "require": {
-    "php": "~7.1.0",
+    "php": ">=7.1.0",
     "magento/module-backend": "*"
   },
   "type": "magento2-module",
