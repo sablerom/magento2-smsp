@@ -57,6 +57,13 @@ class Backend extends ConfigValue {
         /** @var array $value */
         $value = $this->getValue();
         unset($value['__empty']);
+
+        // validate commands before save:
+        if( !$this->_validate( $value ) ) {
+            $this->_dataSaveAllowed = false;
+            return;
+        }
+
         $encodedValue = $this->serializer->serialize( $value );
 
         $this->setValue( $encodedValue );
@@ -74,5 +81,17 @@ class Backend extends ConfigValue {
             $this->serializer->unserialize( $value ) : $value;
 
         $this->setValue( $decodedValue );
+    }
+
+    /**
+     * @param array $data
+     * @return bool
+     */
+    protected function _validate( $data ) {
+        foreach( $data as $row )
+            if( !isset( $row['name'] ) || !isset( $row['params'] ) )
+                return false;
+
+        return true;
     }
 }
