@@ -1,14 +1,16 @@
 <?php
 namespace SableSoft\Smsp\Helper;
 
-use Magento\Framework\App\Helper\AbstractHelper;
+use SableSoft\Core\Helper\Data as CoreHelper;
 
 /**
  * Helper class Data
  *
  * @package SableSoft\Smsp\Helper
  */
-class Data extends AbstractHelper {
+class Data extends CoreHelper {
+
+    protected $module = 'smsp';
 
     const TYPE_URL      = 'url';
     const TYPE_SEX      = 'sex';
