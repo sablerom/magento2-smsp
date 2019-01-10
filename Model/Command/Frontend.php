@@ -24,7 +24,7 @@ class Frontend extends AbstractFieldArray {
                 'label'     => __('Command Params'),
                 'class'     => 'required-entry',
                 'renderer'  => $this->getLayout()->createBlock(
-                    '\SableSoft\Core\Block\Adminhtml\Field\Textarea'
+                    '\SableSoft\Core\Block\Adminhtml\Field\Renderer\Textarea'
                 )
             ]);
         $this->_addAfter = false;
