@@ -2,9 +2,6 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <tab id="sablesoft" translate="label" sortOrder="150">
-            <label>SableSoft</label>
-        </tab>
         <section id="smsp" translate="label"
                  sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
