@@ -1,30 +1,27 @@
 <?php
 namespace SableSoft\Smsp\Model;
 
-use Magento\Framework\Serialize\SerializerInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
+use SableSoft\Core\Model\Config as CoreConfig;
 
 /**
- * Class Config
+ * Class SmspConfig
  *
  * @package SableSoft\Smsp\Model
  */
-class Config {
+class Config extends CoreConfig {
     /** @var string  */
     const SECTION           = 'smsp';
-
-    const GROUP_GENERAL     = 'general';
-    const GROUP_DEVELOP     = 'general/develop';
 
     const FIELD_USER        = 'user';
     const FIELD_KEY         = 'apikey';
     const FIELD_SENDER      = 'sender';
     const FIELD_COUNTRY     = 'country';
-    const FIELD_DEVELOP     = 'is_develop';
 
     const FIELD_URL         = 'url';
     const FIELD_DEVKEY      = 'devkey';
     const FIELD_COMMANDS    = 'commands';
+
+    protected $section = self::SECTION;
     /** @var array */
     protected $commands;
 
@@ -41,42 +38,6 @@ class Config {
         self::FIELD_DEVKEY    => self::GROUP_DEVELOP,
         self::FIELD_COMMANDS  => self::GROUP_DEVELOP
     ];
-
-    /** @var SerializerInterface */
-    protected $serializer;
-    /** @var ScopeConfigInterface  */
-    protected $scopeConfig;
-    /** @var \Psr\Log\LoggerInterface  */
-    protected $logger;
-
-    /**
-     * Config constructor.
-     *
-     * @param ScopeConfigInterface  $scopeConfig
-     */
-    public function __construct(
-        SerializerInterface $serializer,
-        ScopeConfigInterface $scopeConfig,
-        \Psr\Log\LoggerInterface $logger
-    ) {
-        $this->serializer = $serializer;
-        $this->scopeConfig = $scopeConfig;
-        $this->logger = $logger;
-    }
-
-    /**
-     * @param string $key
-     * @return mixed
-     */
-    public function getValue( string $key ) {
-        if( !array_key_exists( $key, $this->getKeys() ) ) {
-            $this->logger->warning( __( "Invalid smsp config key: '%1'", $key) );
-
-            return false;
-        }
-
-        return $this->scopeConfig->getValue( $this->path( $key ) );
-    }
 
     public function getCommands() {
         $commands = [];
@@ -113,21 +74,5 @@ class Config {
         }
 
         return $params;
-    }
-
-    /**
-     * @return array
-     */
-    public function getKeys() {
-        return $this->keys;
-    }
-
-    /**
-     * @param string $key
-     * @return string
-     */
-    protected function path( string $key ) : string {
-        $group = $this->getKeys()[ $key ];
-        return self::SECTION . DIRECTORY_SEPARATOR . $group . DIRECTORY_SEPARATOR . $key;
     }
 }

@@ -32,14 +32,6 @@ class Api {
     /** @var \Psr\Log\LoggerInterface  */
     protected $logger;
 
-    /** @var array - smsp.by api commands with params for use @todo - move to config! */
-    protected $commands = [
-        'msg_send' => [
-            'recipients'    => '!numbers',
-            'urgent'        => Data::TYPE_FLAG
-        ]
-    ];
-
     /** @var array - curl options */
     protected $options = [];
     /** @var array - curl response cache */
