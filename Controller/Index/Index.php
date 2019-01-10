@@ -75,9 +75,11 @@ class Index extends \Magento\Framework\App\Action\Action {
                     'error'       => $this->api->error,
                     'command'     => $this->command,
                     'params'      => $this->params,
-                    'request'     => $this->api->getParams(),
                     'response'    => $this->api->response
                 ];
+                //set request full params if develop:
+                if( $this->config->getValue('is_develop') )
+                    $data['request'] = $this->api->getParams();
             } catch( \Exception $e ) {
                 $data = [
                     'success' => false,
@@ -96,7 +98,7 @@ class Index extends \Magento\Framework\App\Action\Action {
      * @return bool
      */
     protected function access( $request ) {
-        if( $this->config->getValue(Config::FIELD_DEVELOP ) )
+        if( $this->config->getValue( Config::FIELD_DEVELOP ) )
             return true;
 
         return $request->isAjax();
