@@ -29,17 +29,17 @@
                     <validate>required-entry</validate>
                     <comment>SMSP Api user key</comment>
                 </field>
-                <field id="sender" translate="label comment" type="text" sortOrder="120"
+                <field id="country" translate="label comment" type="text" sortOrder="120"
+                       showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Country Code</label>
+                    <validate>required-entry validate-digits</validate>
+                    <comment>Country code for applying to recipients numbers</comment>
+                </field>
+                <field id="sender" translate="label comment" type="text" sortOrder="130"
                        showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Sender</label>
                     <validate>validate-data</validate>
                     <comment>SMSP Sender Name</comment>
-                </field>
-                <field id="country" translate="label comment" type="text" sortOrder="130"
-                       showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Country Code</label>
-                    <validate>validate-digits</validate>
-                    <comment>Country code for applying to recipients numbers</comment>
                 </field>
                 <field id="is_develop" translate="label comment" type="select" sortOrder="140"
                        showInDefault="1" showInWebsite="1" showInStore="1">
